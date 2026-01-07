@@ -1,0 +1,24 @@
+# Minecraft
+*.mcaddon
+*.mcpack
+*.mcworld
+world_behavior_packs.json
+world_resource_packs.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Node
+node_modules/
+package-lock.json
+
+# Temp
+temp/
+*.log
+*.tmp

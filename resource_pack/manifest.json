@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Wojan Shop Resource Pack",
+    "description": "Tekstury itemow ze sklepu Wojan Shop!",
+    "uuid": "d7c6b5a4-f321-4109-8754-321098765432",
+    "version": [1, 1, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "c6b5a4f3-2109-4087-6543-210987654321",
+      "version": [1, 1, 0]
+    }
+  ]
+}
