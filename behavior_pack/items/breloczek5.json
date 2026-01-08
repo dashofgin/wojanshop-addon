@@ -2,16 +2,16 @@
   "format_version": "1.21.0",
   "minecraft:item": {
     "description": {
-      "identifier": "wojanshop:bryloczek4",
+      "identifier": "wojanshop:breloczek5",
       "menu_category": {
         "category": "items"
       }
     },
     "components": {
       "minecraft:max_stack_size": 64,
-      "minecraft:icon": "wojanshop:bryloczek4",
+      "minecraft:icon": "wojanshop:breloczek5",
       "minecraft:display_name": {
-        "value": "Breloczek Wojan #4"
+        "value": "Breloczek Wojan #5"
       }
     }
   }

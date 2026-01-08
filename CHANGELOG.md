@@ -5,6 +5,36 @@ Wszystkie znaczące zmiany w projekcie Wojan Shop Addon będą dokumentowane w t
 Format bazuje na [Keep a Changelog](https://keepachangelog.com/pl/1.0.0/),
 a projekt stosuje [Semantic Versioning](https://semver.org/lang/pl/).
 
+## [1.1.1] - 2026-01-08
+
+### 🔧 Fixed
+- **Naprawiono rozmiar itemów w grze**: Dodano attachables system ze skalowaniem dla wszystkich 28 itemów
+  - Items teraz prawidłowo wyświetlają się w ręce gracza (zarówno first-person jak i third-person)
+  - Zachowana wysoka rozdzielczość tekstur fotorealistycznych (252x252, 196x196 px)
+  - Dodano geometry, animations i render controllers dla prawidłowego skalowania
+
+- **Poprawiono ortografię**:
+  - Zmieniono `bryloczek` → `breloczek` we wszystkich plikach (28 plików)
+  - Zaktualizowano identyfikatory: `wojanshop:breloczek1-9`
+  - Zachowano poprawną nazwę wyświetlaną: "Breloczek Wojan #1-9"
+
+- **Zaktualizowano nazwy wyświetlane**:
+  - "Napój Energetyczny Wojan" → "Wojan Malinowy"
+
+### ✨ Added
+- Dodano kompletny attachables system dla high-resolution items:
+  - `resource_pack/models/entity/wojanshop_item.geo.json` - geometria z texture mesh
+  - `resource_pack/animations/wojanshop_item.animation.json` - animacja skalowania i pozycjonowania
+  - `resource_pack/render_controllers/wojanshop_item.render_controllers.json` - kontroler renderowania
+  - 28 attachable plików dla każdego itemu z enchantment support
+
+### 📝 Technical
+- Format zgodny z oficjalną dokumentacją Microsoft Learn dla Bedrock 1.21
+- Użyto texture_meshes zamiast ręcznego modelowania
+- Animacje wykorzystują Molang expressions dla różnych perspektyw kamery
+
+---
+
 ## [1.1.0] - 2026-01-06
 
 ### 🔧 Fixed
@@ -107,13 +137,15 @@ a projekt stosuje [Semantic Versioning](https://semver.org/lang/pl/).
 
 ## Version History
 
-- **v1.1.0** (2026-01-06) - ✅ Obecna wersja (stabilna)
+- **v1.1.1** (2026-01-08) - ✅ Obecna wersja (stabilna) - Naprawiono rozmiar itemów + attachables
+- **v1.1.0** (2026-01-06) - ✅ Stabilna
 - **v1.0.9** (2026-01-05) - ❌ Deprecated
 - **v1.0.8** (2026-01-04) - ❌ Deprecated
 - **v1.0.7** (2026-01-03) - ❌ Deprecated
 
 ---
 
+[1.1.1]: https://github.com/TWOJA_NAZWA/wojanshop-addon/releases/tag/v1.1.1
 [1.1.0]: https://github.com/TWOJA_NAZWA/wojanshop-addon/releases/tag/v1.1.0
 [1.0.9]: https://github.com/TWOJA_NAZWA/wojanshop-addon/releases/tag/v1.0.9
 [1.0.8]: https://github.com/TWOJA_NAZWA/wojanshop-addon/releases/tag/v1.0.8

@@ -3,7 +3,7 @@
 **Oficjalny addon pack ze sklepem Wojan Shop dla Minecraft Bedrock Edition 1.21**
 
 ![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.0+-brightgreen)
-![Version](https://img.shields.io/badge/version-1.1.0-blue)
+![Version](https://img.shields.io/badge/version-1.1.1-blue)
 ![Status](https://img.shields.io/badge/status-active-success)
 
 ## 📋 Opis
@@ -29,7 +29,7 @@ Addon dodający **28 unikalnych itemów** ze sklepu Wojan Shop do Minecraft Bedr
 
 ### Metoda 1: Automatyczna (mcaddon)
 
-1. Pobierz `wojanshop_v1.1.0.mcaddon`
+1. Pobierz `wojanshop_v1.1.1.mcaddon`
 2. Dwukliknij plik
 3. Minecraft automatycznie zaimportuje addon
 
@@ -56,7 +56,7 @@ Addon dodający **28 unikalnych itemów** ze sklepu Wojan Shop do Minecraft Bedr
 /give @s wojanshop:cocacola
 /give @s wojanshop:napojwojan
 /give @s wojanshop:bluza1
-/give @s wojanshop:bryloczek1
+/give @s wojanshop:breloczek1
 ```
 
 ### Lista wszystkich items
@@ -69,7 +69,7 @@ Addon dodający **28 unikalnych itemów** ze sklepu Wojan Shop do Minecraft Bedr
 - `wojanshop:lody1` - Lody Truskawkowe
 - `wojanshop:lody2` - Lody Czekoladowe
 - `wojanshop:cocacola` - Coca Cola
-- `wojanshop:napojwojan` - Napój Energetyczny Wojan
+- `wojanshop:napojwojan` - Wojan Malinowy
 - `wojanshop:termos` - Termos
 
 **Ubrania:**
@@ -88,7 +88,7 @@ Addon dodający **28 unikalnych itemów** ze sklepu Wojan Shop do Minecraft Bedr
 - `wojanshop:kubek1` - Kubek Czarny
 - `wojanshop:kubek2` - Kubek Biały
 - `wojanshop:wojanteam` - Logo Wojan Team
-- `wojanshop:bryloczek1-9` - 9 różnych breloczków
+- `wojanshop:breloczek1-9` - 9 różnych breloczków
 
 </details>
 
@@ -102,17 +102,19 @@ Addon dodający **28 unikalnych itemów** ze sklepu Wojan Shop do Minecraft Bedr
 
 Zobacz [CHANGELOG.md](CHANGELOG.md) dla pełnej historii wersji.
 
-### Wersja 1.1.0 (06.01.2026)
-- ✅ Naprawiono problem z gigantycznymi 3D modelami
-- ✅ Items teraz jako proste 2D sprites
-- ✅ Wszystkie 28 items działają poprawnie
-- ✅ Zaktualizowano UUID
+### Wersja 1.1.1 (08.01.2026)
+- ✅ Naprawiono rozmiar itemów w grze - dodano attachables system
+- ✅ Items prawidłowo skalowane w ręce gracza (first/third person)
+- ✅ Zachowana wysoka rozdzielczość tekstur fotorealistycznych
+- ✅ Poprawiono ortografię: bryloczek → breloczek
+- ✅ Zmieniono nazwę: "Napój Energetyczny Wojan" → "Wojan Malinowy"
 
 ## 🐛 Known Issues
 
 - ⚠️ Food items nie dają żadnych efektów (speed, regeneration) - wymaga custom components (w przyszłej wersji)
 - ⚠️ Brak tłumaczeń wielojęzycznych - nazwy hardcoded
 - ⚠️ Brak pack_icon.png
+- ℹ️ Tekstury są wysokiej rozdzielczości (fotorealistyczne) - wymaga attachables do prawidłowego skalowania
 
 ## 🚀 Roadmap
 

@@ -11,7 +11,7 @@
       "minecraft:max_stack_size": 16,
       "minecraft:icon": "wojanshop:napojwojan",
       "minecraft:display_name": {
-        "value": "Napój Energetyczny Wojan"
+        "value": "Wojan Malinowy"
       },
       "minecraft:food": {
         "nutrition": 3,
