@@ -145,8 +145,8 @@ a projekt stosuje [Semantic Versioning](https://semver.org/lang/pl/).
 
 ---
 
-[1.1.1]: https://github.com/TWOJA_NAZWA/wojanshop-addon/releases/tag/v1.1.1
-[1.1.0]: https://github.com/TWOJA_NAZWA/wojanshop-addon/releases/tag/v1.1.0
-[1.0.9]: https://github.com/TWOJA_NAZWA/wojanshop-addon/releases/tag/v1.0.9
-[1.0.8]: https://github.com/TWOJA_NAZWA/wojanshop-addon/releases/tag/v1.0.8
-[1.0.7]: https://github.com/TWOJA_NAZWA/wojanshop-addon/releases/tag/v1.0.7
+[1.1.1]: https://github.com/dashofgin/wojanshop-addon/releases/tag/v1.1.1
+[1.1.0]: https://github.com/dashofgin/wojanshop-addon/releases/tag/v1.1.0
+[1.0.9]: https://github.com/dashofgin/wojanshop-addon/releases/tag/v1.0.9
+[1.0.8]: https://github.com/dashofgin/wojanshop-addon/releases/tag/v1.0.8
+[1.0.7]: https://github.com/dashofgin/wojanshop-addon/releases/tag/v1.0.7

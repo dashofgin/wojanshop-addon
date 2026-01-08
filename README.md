@@ -128,7 +128,7 @@ Zobacz [CHANGELOG.md](CHANGELOG.md) dla pełnej historii wersji.
 ## 🤝 Kontakt
 
 - **Projekt dla**: Wojan Shop (serwer Craft)
-- **GitHub**: [wojanshop-addon](https://github.com/TWOJA_NAZWA/wojanshop-addon)
+- **GitHub**: [wojanshop-addon](https://github.com/dashofgin/wojanshop-addon)
 - **Issues**: Zgłoś błąd przez GitHub Issues
 
 ## 📄 Licencja
