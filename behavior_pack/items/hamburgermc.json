@@ -18,7 +18,6 @@
         "saturation_modifier": 0.8,
         "can_always_eat": false
       },
-      "minecraft:use_duration": 32,
       "minecraft:use_animation": "eat",
       "minecraft:use_modifiers": {
         "use_duration": 32,
