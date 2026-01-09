@@ -16,7 +16,7 @@
             "c.is_first_person ? 30 : -165"
           ],
           "scale": [
-            "c.is_first_person ? 1 : 0.5",
+            "c.is_first_person ? -1 : -0.5",
             "c.is_first_person ? 1 : 0.5",
             "c.is_first_person ? 1 : 0.5"
           ]

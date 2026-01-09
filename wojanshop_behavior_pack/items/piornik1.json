@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.30",
+  "minecraft:item": {
+    "description": {
+      "identifier": "wojanshop:piornik1",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 64,
+      "minecraft:icon": "wojanshop:piornik1",
+      "minecraft:display_name": {
+        "value": "Piórnik Wojan Shop"
+      }
+    }
+  }
+}

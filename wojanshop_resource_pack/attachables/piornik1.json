@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "wojanshop:piornik1",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/items/piornik1"
+      },
+      "geometry": {
+        "default": "geometry.wojanshop_item"
+      },
+      "animations": {
+        "hold": "animation.wojanshop_item.hold"
+      },
+      "scripts": {
+        "animate": [
+          "hold"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.wojanshop_item"
+      ]
+    }
+  }
+}
