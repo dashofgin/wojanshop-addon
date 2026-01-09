@@ -4,12 +4,10 @@
     "description": {
       "identifier": "wojanshop:hamburgermc",
       "materials": {
-        "default": "entity_alphatest",
-        "enchanted": "entity_alphatest_glint"
+        "default": "entity_alphatest"
       },
       "textures": {
-        "default": "textures/items/hamburgermc",
-        "enchanted": "textures/misc/enchanted_item_glint"
+        "default": "textures/items/hamburgermc"
       },
       "geometry": {
         "default": "geometry.wojanshop_item"

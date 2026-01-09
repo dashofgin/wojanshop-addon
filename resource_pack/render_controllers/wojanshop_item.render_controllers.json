@@ -5,12 +5,11 @@
       "geometry": "Geometry.default",
       "materials": [
         {
-          "*": "variable.is_enchanted ? Material.enchanted : Material.default"
+          "*": "Material.default"
         }
       ],
       "textures": [
-        "Texture.default",
-        "Texture.enchanted"
+        "Texture.default"
       ]
     }
   }

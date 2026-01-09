@@ -4,12 +4,10 @@
     "description": {
       "identifier": "wojanshop:termos",
       "materials": {
-        "default": "entity_alphatest",
-        "enchanted": "entity_alphatest_glint"
+        "default": "entity_alphatest"
       },
       "textures": {
-        "default": "textures/items/termos",
-        "enchanted": "textures/misc/enchanted_item_glint"
+        "default": "textures/items/termos"
       },
       "geometry": {
         "default": "geometry.wojanshop_item"

@@ -4,14 +4,14 @@
     "name": "Wojan Shop Resource Pack",
     "description": "Tekstury dla nieoficjalnego fan-made addona inspirowanego sklepem Wojan Shop",
     "uuid": "d7c6b5a4-f321-4109-8754-321098765432",
-    "version": [1, 1, 1],
+    "version": [1, 1, 2],
     "min_engine_version": [1, 21, 0]
   },
   "modules": [
     {
       "type": "resources",
       "uuid": "c6b5a4f3-2109-4087-6543-210987654321",
-      "version": [1, 1, 0]
+      "version": [1, 1, 2]
     }
   ]
 }

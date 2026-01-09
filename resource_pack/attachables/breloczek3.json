@@ -4,12 +4,10 @@
     "description": {
       "identifier": "wojanshop:breloczek3",
       "materials": {
-        "default": "entity_alphatest",
-        "enchanted": "entity_alphatest_glint"
+        "default": "entity_alphatest"
       },
       "textures": {
-        "default": "textures/items/breloczek3",
-        "enchanted": "textures/misc/enchanted_item_glint"
+        "default": "textures/items/breloczek3"
       },
       "geometry": {
         "default": "geometry.wojanshop_item"

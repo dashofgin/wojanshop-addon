@@ -4,7 +4,7 @@
     "name": "Wojan Shop Behavior Pack",
     "description": "Nieoficjalny fan-made addon z itemami inspirowanymi sklepem Wojan Shop",
     "uuid": "f9e8d7c6-b5a4-4321-9876-543210fedcba",
-    "version": [1, 1, 1],
+    "version": [1, 1, 2],
     "min_engine_version": [1, 21, 0]
   },
   "modules": [
@@ -24,7 +24,7 @@
   "dependencies": [
     {
       "uuid": "d7c6b5a4-f321-4109-8754-321098765432",
-      "version": [1, 1, 0]
+      "version": [1, 1, 2]
     },
     {
       "module_name": "@minecraft/server",
