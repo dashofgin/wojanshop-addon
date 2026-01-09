@@ -2,7 +2,7 @@
   "format_version": 2,
   "header": {
     "name": "Wojan Shop Behavior Pack",
-    "description": "Oficjalne itemy ze sklepu Wojan Shop!",
+    "description": "Nieoficjalny fan-made addon z itemami inspirowanymi sklepem Wojan Shop",
     "uuid": "f9e8d7c6-b5a4-4321-9876-543210fedcba",
     "version": [1, 1, 1],
     "min_engine_version": [1, 21, 0]

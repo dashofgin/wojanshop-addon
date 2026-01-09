@@ -1,6 +1,8 @@
 # Changelog
 
-Wszystkie znaczące zmiany w projekcie Wojan Shop Addon będą dokumentowane w tym pliku.
+Wszystkie znaczące zmiany w projekcie Wojan Shop Addon (nieoficjalny fan-made addon) będą dokumentowane w tym pliku.
+
+**Uwaga**: Ten addon nie jest oficjalnie powiązany ze sklepem Wojan Shop. Stworzony przez dashofgin na własny użytek bez komercyjnych celów.
 
 Format bazuje na [Keep a Changelog](https://keepachangelog.com/pl/1.0.0/),
 a projekt stosuje [Semantic Versioning](https://semver.org/lang/pl/).

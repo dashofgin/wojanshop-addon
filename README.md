@@ -1,6 +1,6 @@
 # 🛍️ Wojan Shop Addon
 
-**Oficjalny addon pack ze sklepem Wojan Shop dla Minecraft Bedrock Edition 1.21**
+**Nieoficjalny fan-made addon pack ze sklepem Wojan Shop dla Minecraft Bedrock Edition 1.21**
 
 ![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.0+-brightgreen)
 ![Version](https://img.shields.io/badge/version-1.1.1-blue)
@@ -8,7 +8,7 @@
 
 ## 📋 Opis
 
-Addon dodający **28 unikalnych itemów** ze sklepu Wojan Shop do Minecraft Bedrock Edition. Zawiera jedzenie, napoje, ubrania i akcesoria z prawdziwego sklepu!
+Nieoficjalny addon stworzony na własny użytek, dodający **28 unikalnych itemów** inspirowanych sklepem Wojan Shop do Minecraft Bedrock Edition. Zawiera jedzenie, napoje, ubrania i akcesoria!
 
 ### ✨ Funkcjonalności
 
@@ -125,15 +125,18 @@ Zobacz [CHANGELOG.md](CHANGELOG.md) dla pełnej historii wersji.
 - [ ] Loot tables
 - [ ] Trading z villagerami
 
-## 🤝 Kontakt
+## 🤝 O projekcie
 
-- **Projekt dla**: Wojan Shop (serwer Craft)
+- **Autor**: dashofgin
+- **Projekt na własny użytek**: Nieoficjalny fan-made addon
 - **GitHub**: [wojanshop-addon](https://github.com/dashofgin/wojanshop-addon)
 - **Issues**: Zgłoś błąd przez GitHub Issues
 
 ## 📄 Licencja
 
-© 2026 Wojan Shop. Wszystkie prawa zastrzeżone.
+© 2026 dashofgin. Wszystkie prawa zastrzeżone.
+
+**Uwaga**: Ten addon nie jest oficjalnie powiązany ze sklepem Wojan Shop. Stworzony na własny użytek bez komercyjnych celów. Wszystkie znaki towarowe i loga należą do ich prawnych właścicieli.
 
 ---
 
