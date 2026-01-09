@@ -24,7 +24,20 @@ a projekt stosuje [Semantic Versioning](https://semver.org/lang/pl/).
   - "Napój Energetyczny Wojan" → "Wojan Malinowy"
 
 ### ✨ Added
-- Dodano kompletny attachables system dla high-resolution items:
+- **Dodano custom food effects z JavaScript**:
+  - Hamburger MC: Regeneration II (30s)
+  - Coca Cola: Speed II (45s)
+  - Wojan Malinowy: Speed II + Strength I + Jump Boost I (60s)
+  - Termos: Regeneration I + Resistance I (60s)
+  - Lody Truskawkowe: Speed I (20s)
+  - Lody Czekoladowe: Jump Boost II (30s)
+  - Wymaga włączenia Beta APIs
+
+- **Dodano pack_icon.png**:
+  - 256x256 PNG dla behavior_pack i resource_pack
+  - Używa logo Wojan Team
+
+- **Dodano kompletny attachables system** dla high-resolution items:
   - `resource_pack/models/entity/wojanshop_item.geo.json` - geometria z texture mesh
   - `resource_pack/animations/wojanshop_item.animation.json` - animacja skalowania i pozycjonowania
   - `resource_pack/render_controllers/wojanshop_item.render_controllers.json` - kontroler renderowania
@@ -34,6 +47,8 @@ a projekt stosuje [Semantic Versioning](https://semver.org/lang/pl/).
 - Format zgodny z oficjalną dokumentacją Microsoft Learn dla Bedrock 1.21
 - Użyto texture_meshes zamiast ręcznego modelowania
 - Animacje wykorzystują Molang expressions dla różnych perspektyw kamery
+- JavaScript module z @minecraft/server API v1.8.0
+- Custom components zarejestrowane przez world.beforeEvents.worldInitialize
 
 ---
 

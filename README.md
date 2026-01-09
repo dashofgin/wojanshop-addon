@@ -12,10 +12,12 @@ Nieoficjalny addon stworzony na własny użytek, dodający **28 unikalnych item�
 
 ### ✨ Funkcjonalności
 
-- **6 Food Items**: Hamburger, lody (2x), Coca Cola, napój Wojan, termos
+- **6 Food Items z efektami**: Hamburger, lody (2x), Coca Cola, napój Wojan, termos
   - Możliwość jedzenia/picia
   - Nutrition i saturation
   - Animacje eat/drink
+  - **Efekty potion** (Speed, Regeneration, Strength, Jump Boost, Resistance)
+  - Wymaga Beta APIs
 
 - **6 Ubrań**: Bluzy (2x), koszulki (2x), czapka, skarpetki
   - Items kolekcjonerskie
@@ -108,22 +110,22 @@ Zobacz [CHANGELOG.md](CHANGELOG.md) dla pełnej historii wersji.
 - ✅ Zachowana wysoka rozdzielczość tekstur fotorealistycznych
 - ✅ Poprawiono ortografię: bryloczek → breloczek
 - ✅ Zmieniono nazwę: "Napój Energetyczny Wojan" → "Wojan Malinowy"
+- ✅ Dodano pack_icon.png dla obu packów
+- ✅ Zaimplementowano custom food effects z JavaScript (Speed, Regen, Strength, Jump, Resistance)
 
 ## 🐛 Known Issues
 
-- ⚠️ Food items nie dają żadnych efektów (speed, regeneration) - wymaga custom components (w przyszłej wersji)
-- ⚠️ Brak tłumaczeń wielojęzycznych - nazwy hardcoded
-- ⚠️ Brak pack_icon.png
-- ℹ️ Tekstury są wysokiej rozdzielczości (fotorealistyczne) - wymaga attachables do prawidłowego skalowania
+- ⚠️ Brak tłumaczeń wielojęzycznych - nazwy hardcoded w JSON
+- ⚠️ Food effects wymagają włączenia Beta APIs na serwerze/świecie
+- ℹ️ Tekstury wysokiej rozdzielczości - używają attachables system
 
 ## 🚀 Roadmap
 
-- [ ] Dodanie custom components dla efektów (JavaScript)
 - [ ] Language files (pl_PL, en_US)
-- [ ] Pack icon
 - [ ] Crafting recipes
 - [ ] Loot tables
 - [ ] Trading z villagerami
+- [ ] 3D models dla wybranych items (plecak, czapka)
 
 ## 🤝 O projekcie
 
