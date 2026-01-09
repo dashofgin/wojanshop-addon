@@ -22,6 +22,70 @@
           ]
         }
       }
+    },
+    "animation.wojanshop_item.eating": {
+      "animation_length": 1.6,
+      "bones": {
+        "rightitem": {
+          "position": {
+            "0.0": [
+              "c.is_first_person ? -6 : 1",
+              "c.is_first_person ? 0 : -1",
+              "c.is_first_person ? -1 : -6"
+            ],
+            "0.2": [
+              "c.is_first_person ? -6 : 1",
+              "c.is_first_person ? -2 : -1",
+              "c.is_first_person ? -3 : -6"
+            ],
+            "0.4": [
+              "c.is_first_person ? -6 : 1",
+              "c.is_first_person ? 0 : -1",
+              "c.is_first_person ? -1 : -6"
+            ],
+            "0.6": [
+              "c.is_first_person ? -6 : 1",
+              "c.is_first_person ? -2 : -1",
+              "c.is_first_person ? -3 : -6"
+            ],
+            "0.8": [
+              "c.is_first_person ? -6 : 1",
+              "c.is_first_person ? 0 : -1",
+              "c.is_first_person ? -1 : -6"
+            ],
+            "1.0": [
+              "c.is_first_person ? -6 : 1",
+              "c.is_first_person ? -2 : -1",
+              "c.is_first_person ? -3 : -6"
+            ],
+            "1.2": [
+              "c.is_first_person ? -6 : 1",
+              "c.is_first_person ? 0 : -1",
+              "c.is_first_person ? -1 : -6"
+            ],
+            "1.4": [
+              "c.is_first_person ? -6 : 1",
+              "c.is_first_person ? -2 : -1",
+              "c.is_first_person ? -3 : -6"
+            ],
+            "1.6": [
+              "c.is_first_person ? -6 : 1",
+              "c.is_first_person ? 0 : -1",
+              "c.is_first_person ? -1 : -6"
+            ]
+          },
+          "rotation": [
+            "c.is_first_person ? 45 : 15",
+            "c.is_first_person ? 15 : 0",
+            "c.is_first_person ? 30 : -165"
+          ],
+          "scale": [
+            "c.is_first_person ? -1 : -0.5",
+            "c.is_first_person ? 1 : 0.5",
+            "c.is_first_person ? 1 : 0.5"
+          ]
+        }
+      }
     }
   }
 }
