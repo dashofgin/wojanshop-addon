@@ -207,50 +207,69 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
     const radius = message ? parseInt(message) : 50;
 
     if (command === "count") {
-        // Count item frames in radius
+        // Count item frames in radius (both normal and glow)
         try {
             const location = player.location;
             const dimension = player.dimension;
 
-            // Get all entities in a box around player
-            const entities = dimension.getEntities({
+            // Get both normal and glow item frames
+            const normalFrames = dimension.getEntities({
                 location: location,
                 maxDistance: radius,
                 type: "minecraft:item_frame"
             });
 
-            const count = entities.length;
-            player.sendMessage(`§e[Wojan Shop] §fZnaleziono §6${count}§f ramek w promieniu §6${radius}§f bloków.`);
+            const glowFrames = dimension.getEntities({
+                location: location,
+                maxDistance: radius,
+                type: "minecraft:glow_item_frame"
+            });
 
-            if (count > 0) {
+            const normalCount = normalFrames.length;
+            const glowCount = glowFrames.length;
+            const totalCount = normalCount + glowCount;
+
+            player.sendMessage(`§e[Wojan Shop] §fZnaleziono §6${totalCount}§f ramek w promieniu §6${radius}§f bloków.`);
+            if (normalCount > 0 || glowCount > 0) {
+                player.sendMessage(`§7  Zwykłe: §6${normalCount}§7, Świecące: §6${glowCount}`);
+            }
+
+            if (totalCount > 0) {
                 player.sendMessage(`§7Użyj §e/scriptevent wojanshop:clear${radius !== 50 ? ` ${radius}` : ''}§7 aby usunąć ramki.`);
             }
         } catch (error) {
             player.sendMessage(`§c[Błąd] Nie udało się policzyć ramek: ${error}`);
         }
     } else if (command === "clear") {
-        // Clear item frames in radius
+        // Clear item frames in radius (both normal and glow)
         try {
             const location = player.location;
             const dimension = player.dimension;
 
-            // Get all item frames in radius
-            const entities = dimension.getEntities({
+            // Get both normal and glow item frames
+            const normalFrames = dimension.getEntities({
                 location: location,
                 maxDistance: radius,
                 type: "minecraft:item_frame"
             });
 
-            const count = entities.length;
+            const glowFrames = dimension.getEntities({
+                location: location,
+                maxDistance: radius,
+                type: "minecraft:glow_item_frame"
+            });
 
-            if (count === 0) {
+            const allFrames = [...normalFrames, ...glowFrames];
+            const totalCount = allFrames.length;
+
+            if (totalCount === 0) {
                 player.sendMessage(`§e[Wojan Shop] §fBrak ramek w promieniu §6${radius}§f bloków.`);
                 return;
             }
 
             // Remove all item frames (items will drop automatically)
             let removed = 0;
-            for (const frame of entities) {
+            for (const frame of allFrames) {
                 try {
                     frame.remove();
                     removed++;
