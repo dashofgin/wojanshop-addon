@@ -1,4 +1,4 @@
-import { world } from "@minecraft/server";
+import { world, system } from "@minecraft/server";
 
 // Define effects for each food item
 const foodEffects = {
@@ -56,6 +56,135 @@ world.afterEvents.itemCompleteUse.subscribe((event) => {
                 });
             } catch (error) {
                 console.warn(`Failed to add effect ${effectData.effect}: ${error}`);
+            }
+        }
+    }
+});
+
+// Music disc jukebox system
+const musicDiscs = {
+    "wojanshop:musicdiscbaza": {
+        sound: "record.wojan_baza",
+        title: "Wojan - Baza"
+    },
+    "wojanshop:musicdisckurier": {
+        sound: "record.luczek_kurier",
+        title: "Luczek - Kurier"
+    },
+    "wojanshop:musicdiscmamban": {
+        sound: "record.palion_mamban",
+        title: "Palion - Mam Bana"
+    }
+};
+
+// Track currently playing jukeboxes
+const playingJukeboxes = new Map();
+
+// Handle music disc insertion into jukebox
+world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
+    const { block, player, itemStack } = event;
+
+    // Check if player is interacting with a jukebox
+    if (block.typeId !== "minecraft:jukebox") {
+        return;
+    }
+
+    // Check if player is holding a custom music disc
+    if (!itemStack || !musicDiscs[itemStack.typeId]) {
+        return;
+    }
+
+    const discData = musicDiscs[itemStack.typeId];
+    const blockPos = `${block.location.x},${block.location.y},${block.location.z}`;
+
+    // Schedule the music to play after the block interaction
+    system.runTimeout(() => {
+        try {
+            // Stop any currently playing music first
+            if (playingJukeboxes.has(blockPos)) {
+                const players = block.dimension.getPlayers();
+                for (const p of players) {
+                    p.runCommand(`stopsound @s music`);
+                }
+            }
+
+            // Play the music disc sound at jukebox location
+            block.dimension.playSound(discData.sound, block.location, {
+                volume: 1.0,
+                pitch: 1.0
+            });
+
+            // Show message to player
+            player.sendMessage(`§6♫ §eTeraz gra: §f${discData.title} §6♫`);
+
+            // Track this jukebox as playing
+            playingJukeboxes.set(blockPos, {
+                sound: discData.sound,
+                dimension: block.dimension,
+                location: block.location
+            });
+
+        } catch (error) {
+            console.warn(`Failed to play music disc: ${error}`);
+        }
+    }, 1);
+});
+
+// Handle jukebox removal/stop
+world.afterEvents.playerBreakBlock.subscribe((event) => {
+    const { block, brokenBlockPermutation, player } = event;
+
+    if (brokenBlockPermutation.type.id === "minecraft:jukebox") {
+        const blockPos = `${block.location.x},${block.location.y},${block.location.z}`;
+
+        // Stop music if this jukebox was playing
+        if (playingJukeboxes.has(blockPos)) {
+            const jukeboxData = playingJukeboxes.get(blockPos);
+
+            // Stop the music for all nearby players
+            try {
+                // Get all players in the dimension
+                const players = jukeboxData.dimension.getPlayers();
+
+                // Stop sound for each player
+                for (const p of players) {
+                    p.runCommand(`stopsound @s music`);
+                }
+            } catch (error) {
+                console.warn(`Failed to stop music: ${error}`);
+            }
+
+            playingJukeboxes.delete(blockPos);
+        }
+    }
+});
+
+// Also handle when player clicks jukebox to eject disc
+world.afterEvents.playerInteractWithBlock.subscribe((event) => {
+    const { block, player } = event;
+
+    if (block.typeId === "minecraft:jukebox") {
+        const blockPos = `${block.location.x},${block.location.y},${block.location.z}`;
+
+        // If jukebox was playing and player clicks without holding a disc, they're ejecting
+        if (playingJukeboxes.has(blockPos)) {
+            const itemStack = player.getComponent("minecraft:inventory")?.container?.getItem(player.selectedSlotIndex);
+
+            // If not holding a music disc, they're ejecting the current one
+            if (!itemStack || !musicDiscs[itemStack.typeId]) {
+                system.runTimeout(() => {
+                    try {
+                        // Stop music for all nearby players
+                        const players = block.dimension.getPlayers();
+                        for (const p of players) {
+                            p.runCommand(`stopsound @s music`);
+                        }
+                    } catch (error) {
+                        console.warn(`Failed to stop music on eject: ${error}`);
+                    }
+
+                    playingJukeboxes.delete(blockPos);
+                }, 1);
             }
         }
     }

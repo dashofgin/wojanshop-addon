@@ -1,0 +1,35 @@
+{
+  "format_version": "1.14.0",
+  "sound_definitions": {
+    "record.wojan_baza": {
+      "category": "music",
+      "sounds": [
+        {
+          "name": "sounds/music/wojan_baza",
+          "stream": true,
+          "volume": 1.0
+        }
+      ]
+    },
+    "record.luczek_kurier": {
+      "category": "music",
+      "sounds": [
+        {
+          "name": "sounds/music/luczek_kurier",
+          "stream": true,
+          "volume": 1.0
+        }
+      ]
+    },
+    "record.palion_mamban": {
+      "category": "music",
+      "sounds": [
+        {
+          "name": "sounds/music/palion_mamban",
+          "stream": true,
+          "volume": 1.0
+        }
+      ]
+    }
+  }
+}

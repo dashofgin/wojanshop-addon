@@ -38,6 +38,9 @@
     "wojanshop:maskotkanoobek": {"textures": "textures/items/maskotkanoobek"},
     "wojanshop:maskotkaptys": {"textures": "textures/items/maskotkaptys"},
     "wojanshop:czapkapalion": {"textures": "textures/items/czapkapalion"},
-    "wojanshop:logopalion": {"textures": "textures/items/logopalion"}
+    "wojanshop:logopalion": {"textures": "textures/items/logopalion"},
+    "wojanshop:musicdiscbaza": {"textures": "textures/items/musicdiscbaza"},
+    "wojanshop:musicdisckurier": {"textures": "textures/items/musicdisc2"},
+    "wojanshop:musicdiscmamban": {"textures": "textures/items/musicdisc3"}
   }
 }
