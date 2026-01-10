@@ -212,17 +212,30 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
             const location = player.location;
             const dimension = player.dimension;
 
-            // Get both normal and glow item frames
-            const normalFrames = dimension.getEntities({
-                location: location,
-                maxDistance: radius,
+            // Get ALL item frames in dimension, then filter by distance manually
+            const allNormalFrames = dimension.getEntities({
                 type: "minecraft:item_frame"
             });
 
-            const glowFrames = dimension.getEntities({
-                location: location,
-                maxDistance: radius,
+            const allGlowFrames = dimension.getEntities({
                 type: "minecraft:glow_item_frame"
+            });
+
+            // Filter by distance manually
+            const normalFrames = allNormalFrames.filter(frame => {
+                const dx = frame.location.x - location.x;
+                const dy = frame.location.y - location.y;
+                const dz = frame.location.z - location.z;
+                const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                return distance <= radius;
+            });
+
+            const glowFrames = allGlowFrames.filter(frame => {
+                const dx = frame.location.x - location.x;
+                const dy = frame.location.y - location.y;
+                const dz = frame.location.z - location.z;
+                const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                return distance <= radius;
             });
 
             const normalCount = normalFrames.length;
@@ -246,17 +259,30 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
             const location = player.location;
             const dimension = player.dimension;
 
-            // Get both normal and glow item frames
-            const normalFrames = dimension.getEntities({
-                location: location,
-                maxDistance: radius,
+            // Get ALL item frames in dimension, then filter by distance manually
+            const allNormalFrames = dimension.getEntities({
                 type: "minecraft:item_frame"
             });
 
-            const glowFrames = dimension.getEntities({
-                location: location,
-                maxDistance: radius,
+            const allGlowFrames = dimension.getEntities({
                 type: "minecraft:glow_item_frame"
+            });
+
+            // Filter by distance manually
+            const normalFrames = allNormalFrames.filter(frame => {
+                const dx = frame.location.x - location.x;
+                const dy = frame.location.y - location.y;
+                const dz = frame.location.z - location.z;
+                const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                return distance <= radius;
+            });
+
+            const glowFrames = allGlowFrames.filter(frame => {
+                const dx = frame.location.x - location.x;
+                const dy = frame.location.y - location.y;
+                const dz = frame.location.z - location.z;
+                const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                return distance <= radius;
             });
 
             const allFrames = [...normalFrames, ...glowFrames];
