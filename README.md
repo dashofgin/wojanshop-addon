@@ -3,29 +3,32 @@
 **Nieoficjalny fan-made addon pack ze sklepem Wojan Shop dla Minecraft Bedrock Edition 1.21**
 
 ![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.0+-brightgreen)
-![Version](https://img.shields.io/badge/version-1.1.1-blue)
+![Version](https://img.shields.io/badge/version-1.3.0-blue)
 ![Status](https://img.shields.io/badge/status-active-success)
 
 ## 📋 Opis
 
-Nieoficjalny addon stworzony na własny użytek, dodający **28 unikalnych itemów** inspirowanych sklepem Wojan Shop do Minecraft Bedrock Edition. Zawiera jedzenie, napoje, ubrania i akcesoria!
+Nieoficjalny addon stworzony na własny użytek, dodający **37 unikalnych itemów** inspirowanych sklepem Wojan Shop do Minecraft Bedrock Edition. Zawiera jedzenie, napoje, ubrania i akcesoria!
 
 ### ✨ Funkcjonalności
 
-- **6 Food Items z efektami**: Hamburger, lody (2x), Coca Cola, napój Wojan, termos
-  - Możliwość jedzenia/picia
+- **10 Food/Drink Items z efektami**:
+  - Hamburger, lody (2x), Coca Cola, termos
+  - **Wojanki** (4 smaki): Malinowy, Pomarańczowy, Guma Balonowa, Multiwitamina
+  - Możliwość jedzenia/picia z animacją
   - Nutrition i saturation
-  - Animacje eat/drink
-  - **Efekty potion** (Speed, Regeneration, Strength, Jump Boost, Resistance)
+  - **Wielokrotne efekty potion** (Speed, Regeneration, Strength, Jump Boost, Resistance, Haste, Night Vision, Slow Falling, Health Boost)
   - Wymaga Beta APIs
 
-- **6 Ubrań**: Bluzy (2x), koszulki (2x), czapka, skarpetki
+- **6 Ubrań**: Bluzy (2x), koszulki (2x), czapka zwykła, czapka Palion
   - Items kolekcjonerskie
-  - 2D sprites
+  - Wysokiej jakości tekstury
 
-- **16 Akcesoriów**: Plecak, piórnik, zeszyt, długopis, kubki (2x), breloczki (9x), logo Wojan Team
-  - Dekoracyjne items
-  - Idealne do kolekcjonowania
+- **21 Akcesoriów i maskotek**:
+  - Plecak, piórnik, zeszyt, długopis, kubki (2x), breloczki (9x)
+  - Logo Wojan Team, Logo Palion
+  - **Maskotki**: Wojan, Kati, Noobek, Ptyś
+  - Dekoracyjne items idealne do kolekcjonowania i ekspozycji
 
 ## 📦 Instalacja
 
