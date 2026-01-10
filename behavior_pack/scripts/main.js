@@ -310,6 +310,40 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
         } catch (error) {
             player.sendMessage(`§c[Błąd] Nie udało się usunąć ramek: ${error}`);
         }
+    } else if (command === "debug") {
+        // Debug: Show all nearby entities to identify frame types
+        try {
+            const location = player.location;
+            const dimension = player.dimension;
+
+            // Get ALL entities nearby
+            const allEntities = dimension.getEntities();
+
+            // Filter by distance (20 blocks for debug)
+            const nearbyEntities = allEntities.filter(entity => {
+                const dx = entity.location.x - location.x;
+                const dy = entity.location.y - location.y;
+                const dz = entity.location.z - location.z;
+                const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                return distance <= 20;
+            });
+
+            // Group by type
+            const typeCount = {};
+            for (const entity of nearbyEntities) {
+                const type = entity.typeId;
+                typeCount[type] = (typeCount[type] || 0) + 1;
+            }
+
+            player.sendMessage(`§e[Debug] §fEntity w promieniu 20 bloków:`);
+            const entries = Object.entries(typeCount).sort((a, b) => b[1] - a[1]);
+            for (const [type, count] of entries) {
+                player.sendMessage(`§7  ${type}: §6${count}`);
+            }
+
+        } catch (error) {
+            player.sendMessage(`§c[Błąd] ${error}`);
+        }
     } else if (command === "help") {
         // Show help message
         player.sendMessage(`§6=== Wojan Shop - Narzędzia ===`);
@@ -317,6 +351,8 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
         player.sendMessage(`§7  Pokazuje ile ramek jest w pobliżu (domyślnie 50 bloków)`);
         player.sendMessage(`§e/scriptevent wojanshop:clear [promień]`);
         player.sendMessage(`§7  Usuwa wszystkie ramki w pobliżu (przedmioty wypadają)`);
+        player.sendMessage(`§e/scriptevent wojanshop:debug`);
+        player.sendMessage(`§7  Pokazuje wszystkie entity w pobliżu (diagnostyka)`);
         player.sendMessage(`§e/scriptevent wojanshop:help`);
         player.sendMessage(`§7  Pokazuje tę pomoc`);
         player.sendMessage(`§7Przykład: §e/scriptevent wojanshop:count 100`);
