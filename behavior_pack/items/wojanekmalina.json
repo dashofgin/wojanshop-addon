@@ -2,16 +2,16 @@
   "format_version": "1.20.80",
   "minecraft:item": {
     "description": {
-      "identifier": "wojanshop:napojwojan",
+      "identifier": "wojanshop:wojanekmalina",
       "menu_category": {
         "category": "items"
       }
     },
     "components": {
       "minecraft:max_stack_size": 16,
-      "minecraft:icon": "wojanshop:napojwojan",
+      "minecraft:icon": "wojanshop:wojanekmalina",
       "minecraft:display_name": {
-        "value": "Wojan Malinowy"
+        "value": "Wojanek Malinowy"
       },
       "minecraft:food": {
         "nutrition": 3,

@@ -1,0 +1,37 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "wojanshop:wojanekmultiwitamina",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/items/wojanekmultiwitamina"
+      },
+      "geometry": {
+        "default": "geometry.wojanshop_item"
+      },
+      "animations": {
+        "hold": "animation.wojanshop_item.hold",
+        "eating": "animation.wojanshop_item.eating"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.is_using_item = query.is_using_item;"
+        ],
+        "animate": [
+          {
+            "eating": "variable.is_using_item"
+          },
+          {
+            "hold": "!variable.is_using_item"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.wojanshop_item"
+      ]
+    }
+  }
+}

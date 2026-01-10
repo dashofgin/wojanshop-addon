@@ -8,11 +8,6 @@ const foodEffects = {
     "wojanshop:cocacola": [
         { effect: "speed", duration: 900, amplifier: 1 } // 45s, Level II
     ],
-    "wojanshop:napojwojan": [
-        { effect: "speed", duration: 1200, amplifier: 1 },      // 60s, Level II
-        { effect: "strength", duration: 1200, amplifier: 0 },   // 60s, Level I
-        { effect: "jump_boost", duration: 1200, amplifier: 0 }  // 60s, Level I
-    ],
     "wojanshop:termos": [
         { effect: "regeneration", duration: 1200, amplifier: 0 }, // 60s, Level I
         { effect: "resistance", duration: 1200, amplifier: 0 }    // 60s, Level I
@@ -22,6 +17,24 @@ const foodEffects = {
     ],
     "wojanshop:lody2": [
         { effect: "jump_boost", duration: 600, amplifier: 1 } // 30s, Level II
+    ],
+    "wojanshop:wojanekmalina": [
+        { effect: "speed", duration: 1200, amplifier: 1 },      // 60s, Level II
+        { effect: "strength", duration: 1200, amplifier: 0 },   // 60s, Level I
+        { effect: "jump_boost", duration: 1200, amplifier: 0 }  // 60s, Level I
+    ],
+    "wojanshop:wojanekpomarancza": [
+        { effect: "haste", duration: 2400, amplifier: 1 },      // 120s (2min), Level II
+        { effect: "night_vision", duration: 2400, amplifier: 9 } // 120s (2min), Level X (max!)
+    ],
+    "wojanshop:wojanekgumabalonowa": [
+        { effect: "jump_boost", duration: 1800, amplifier: 2 },  // 90s (1.5min), Level III (max!)
+        { effect: "slow_falling", duration: 1800, amplifier: 1 } // 90s (1.5min), Level II
+    ],
+    "wojanshop:wojanekmultiwitamina": [
+        { effect: "regeneration", duration: 1200, amplifier: 1 },   // 60s, Level II
+        { effect: "health_boost", duration: 1200, amplifier: 0 },   // 60s, Level I
+        { effect: "resistance", duration: 1200, amplifier: 0 }      // 60s, Level I
     ]
 };
 

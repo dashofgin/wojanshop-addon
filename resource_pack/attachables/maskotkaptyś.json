@@ -2,31 +2,22 @@
   "format_version": "1.10.0",
   "minecraft:attachable": {
     "description": {
-      "identifier": "wojanshop:napojwojan",
+      "identifier": "wojanshop:maskotkaptyś",
       "materials": {
         "default": "entity_alphatest"
       },
       "textures": {
-        "default": "textures/items/napojwojan"
+        "default": "textures/items/maskotkaptyś"
       },
       "geometry": {
         "default": "geometry.wojanshop_item"
       },
       "animations": {
-        "hold": "animation.wojanshop_item.hold",
-        "eating": "animation.wojanshop_item.eating"
+        "hold": "animation.wojanshop_item.hold"
       },
       "scripts": {
-        "pre_animation": [
-          "variable.is_using_item = query.is_using_item;"
-        ],
         "animate": [
-          {
-            "eating": "variable.is_using_item"
-          },
-          {
-            "hold": "!variable.is_using_item"
-          }
+          "hold"
         ]
       },
       "render_controllers": [

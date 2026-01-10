@@ -1,0 +1,29 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "wojanshop:wojanekgumabalonowa",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 16,
+      "minecraft:icon": "wojanshop:wojanekgumabalonowa",
+      "minecraft:display_name": {
+        "value": "Wojanek Guma Balonowa"
+      },
+      "minecraft:food": {
+        "nutrition": 3,
+        "saturation_modifier": 0.5,
+        "can_always_eat": true,
+        "using_converts_to": "air"
+      },
+      "minecraft:use_animation": "drink",
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6,
+        "movement_modifier": 0.8
+      }
+    }
+  }
+}

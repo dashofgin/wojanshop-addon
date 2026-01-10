@@ -6,7 +6,6 @@
     "wojanshop:lody1": {"textures": "textures/items/lody1"},
     "wojanshop:lody2": {"textures": "textures/items/lody2"},
     "wojanshop:cocacola": {"textures": "textures/items/cocacola"},
-    "wojanshop:napojwojan": {"textures": "textures/items/napojwojan"},
     "wojanshop:termos": {"textures": "textures/items/termos"},
     "wojanshop:bluza1": {"textures": "textures/items/bluza1"},
     "wojanshop:bluza2": {"textures": "textures/items/bluza2"},
@@ -29,6 +28,16 @@
     "wojanshop:dlugopis": {"textures": "textures/items/dlugopis"},
     "wojanshop:piornik1": {"textures": "textures/items/piornik1"},
     "wojanshop:plecak1": {"textures": "textures/items/plecak1"},
-    "wojanshop:wojanteam": {"textures": "textures/items/wojanteam"}
+    "wojanshop:wojanteam": {"textures": "textures/items/wojanteam"},
+    "wojanshop:wojanekmalina": {"textures": "textures/items/wojanekmalina"},
+    "wojanshop:wojanekpomarancza": {"textures": "textures/items/wojanekpomarancza"},
+    "wojanshop:wojanekgumabalonowa": {"textures": "textures/items/wojanekgumabalonowa"},
+    "wojanshop:wojanekmultiwitamina": {"textures": "textures/items/wojanekmultiwitamina"},
+    "wojanshop:maskotkawojan": {"textures": "textures/items/maskotkawojan"},
+    "wojanshop:maskotkakati": {"textures": "textures/items/maskotkakati"},
+    "wojanshop:maskotkanoobek": {"textures": "textures/items/maskotkanoobek"},
+    "wojanshop:maskotkaptyś": {"textures": "textures/items/maskotkaptyś"},
+    "wojanshop:czapkapalion": {"textures": "textures/items/czapkapalion"},
+    "wojanshop:logopalion": {"textures": "textures/items/logopalion"}
   }
 }
