@@ -189,3 +189,91 @@ world.afterEvents.playerInteractWithBlock.subscribe((event) => {
         }
     }
 });
+
+// Item frame clearing utility for performance optimization
+// Use this to remove old item frames with high-res textures and replace with optimized ones
+system.afterEvents.scriptEventReceive.subscribe((event) => {
+    const { id, sourceEntity, message } = event;
+
+    // Only process wojanshop events from players
+    if (!id.startsWith("wojanshop:") || !sourceEntity) {
+        return;
+    }
+
+    const player = sourceEntity;
+    const command = id.replace("wojanshop:", "");
+
+    // Parse radius from message, default 50 blocks
+    const radius = message ? parseInt(message) : 50;
+
+    if (command === "count") {
+        // Count item frames in radius
+        try {
+            const location = player.location;
+            const dimension = player.dimension;
+
+            // Get all entities in a box around player
+            const entities = dimension.getEntities({
+                location: location,
+                maxDistance: radius,
+                type: "minecraft:item_frame"
+            });
+
+            const count = entities.length;
+            player.sendMessage(`§e[Wojan Shop] §fZnaleziono §6${count}§f ramek w promieniu §6${radius}§f bloków.`);
+
+            if (count > 0) {
+                player.sendMessage(`§7Użyj §e/scriptevent wojanshop:clear${radius !== 50 ? ` ${radius}` : ''}§7 aby usunąć ramki.`);
+            }
+        } catch (error) {
+            player.sendMessage(`§c[Błąd] Nie udało się policzyć ramek: ${error}`);
+        }
+    } else if (command === "clear") {
+        // Clear item frames in radius
+        try {
+            const location = player.location;
+            const dimension = player.dimension;
+
+            // Get all item frames in radius
+            const entities = dimension.getEntities({
+                location: location,
+                maxDistance: radius,
+                type: "minecraft:item_frame"
+            });
+
+            const count = entities.length;
+
+            if (count === 0) {
+                player.sendMessage(`§e[Wojan Shop] §fBrak ramek w promieniu §6${radius}§f bloków.`);
+                return;
+            }
+
+            // Remove all item frames (items will drop automatically)
+            let removed = 0;
+            for (const frame of entities) {
+                try {
+                    frame.remove();
+                    removed++;
+                } catch (e) {
+                    // Skip frames that can't be removed
+                }
+            }
+
+            player.sendMessage(`§a[Wojan Shop] §fUsunięto §6${removed}§f ramek w promieniu §6${radius}§f bloków.`);
+            player.sendMessage(`§7Przedmioty wypadły na ziemię. Podnieś je i umieść w nowych ramkach.`);
+
+        } catch (error) {
+            player.sendMessage(`§c[Błąd] Nie udało się usunąć ramek: ${error}`);
+        }
+    } else if (command === "help") {
+        // Show help message
+        player.sendMessage(`§6=== Wojan Shop - Narzędzia ===`);
+        player.sendMessage(`§e/scriptevent wojanshop:count [promień]`);
+        player.sendMessage(`§7  Pokazuje ile ramek jest w pobliżu (domyślnie 50 bloków)`);
+        player.sendMessage(`§e/scriptevent wojanshop:clear [promień]`);
+        player.sendMessage(`§7  Usuwa wszystkie ramki w pobliżu (przedmioty wypadają)`);
+        player.sendMessage(`§e/scriptevent wojanshop:help`);
+        player.sendMessage(`§7  Pokazuje tę pomoc`);
+        player.sendMessage(`§7Przykład: §e/scriptevent wojanshop:count 100`);
+    }
+});
