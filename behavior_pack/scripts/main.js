@@ -104,7 +104,7 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
             if (playingJukeboxes.has(blockPos)) {
                 const players = block.dimension.getPlayers();
                 for (const p of players) {
-                    p.runCommand(`stopsound @s music`);
+                    p.runCommand(`stopsound @s record`);
                 }
             }
 
@@ -148,7 +148,7 @@ world.afterEvents.playerBreakBlock.subscribe((event) => {
 
                 // Stop sound for each player
                 for (const p of players) {
-                    p.runCommand(`stopsound @s music`);
+                    p.runCommand(`stopsound @s record`);
                 }
             } catch (error) {
                 console.warn(`Failed to stop music: ${error}`);
@@ -177,7 +177,7 @@ world.afterEvents.playerInteractWithBlock.subscribe((event) => {
                         // Stop music for all nearby players
                         const players = block.dimension.getPlayers();
                         for (const p of players) {
-                            p.runCommand(`stopsound @s music`);
+                            p.runCommand(`stopsound @s record`);
                         }
                     } catch (error) {
                         console.warn(`Failed to stop music on eject: ${error}`);
