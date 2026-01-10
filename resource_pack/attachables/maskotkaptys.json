@@ -2,12 +2,12 @@
   "format_version": "1.10.0",
   "minecraft:attachable": {
     "description": {
-      "identifier": "wojanshop:maskotkaptyś",
+      "identifier": "wojanshop:maskotkaptys",
       "materials": {
         "default": "entity_alphatest"
       },
       "textures": {
-        "default": "textures/items/maskotkaptyś"
+        "default": "textures/items/maskotkaptys"
       },
       "geometry": {
         "default": "geometry.wojanshop_item"

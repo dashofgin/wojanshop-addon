@@ -36,7 +36,7 @@
     "wojanshop:maskotkawojan": {"textures": "textures/items/maskotkawojan"},
     "wojanshop:maskotkakati": {"textures": "textures/items/maskotkakati"},
     "wojanshop:maskotkanoobek": {"textures": "textures/items/maskotkanoobek"},
-    "wojanshop:maskotkaptyś": {"textures": "textures/items/maskotkaptyś"},
+    "wojanshop:maskotkaptys": {"textures": "textures/items/maskotkaptys"},
     "wojanshop:czapkapalion": {"textures": "textures/items/czapkapalion"},
     "wojanshop:logopalion": {"textures": "textures/items/logopalion"}
   }
