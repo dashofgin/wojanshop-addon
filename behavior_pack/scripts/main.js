@@ -77,8 +77,32 @@ const musicDiscs = {
     }
 };
 
-// Track currently playing jukeboxes
+// Track currently playing jukeboxes and which players are listening
+// Structure: { blockPos: { sound: string, listeners: Set<playerId> } }
 const playingJukeboxes = new Map();
+
+// Helper function to get players within range of jukebox (65 blocks like vanilla)
+function getPlayersInRange(dimension, location, range = 65) {
+    const allPlayers = dimension.getPlayers();
+    return allPlayers.filter(p => {
+        const dx = p.location.x - location.x;
+        const dy = p.location.y - location.y;
+        const dz = p.location.z - location.z;
+        const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+        return distance <= range;
+    });
+}
+
+// Helper function to stop music for specific players
+function stopMusicForPlayers(players, soundId) {
+    for (const player of players) {
+        try {
+            player.stopSound(soundId);
+        } catch (error) {
+            console.warn(`Failed to stop sound for player: ${error}`);
+        }
+    }
+}
 
 // Handle music disc insertion into jukebox
 world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
@@ -102,24 +126,35 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
         try {
             // Stop any currently playing music first
             if (playingJukeboxes.has(blockPos)) {
-                const players = block.dimension.getPlayers();
-                for (const p of players) {
-                    p.runCommand(`stopsound @s record`);
+                const oldData = playingJukeboxes.get(blockPos);
+                const playersToStop = getPlayersInRange(block.dimension, block.location);
+                stopMusicForPlayers(playersToStop, oldData.sound);
+            }
+
+            // Get all players in range
+            const nearbyPlayers = getPlayersInRange(block.dimension, block.location);
+
+            // Play music for each player individually
+            const listeners = new Set();
+            for (const p of nearbyPlayers) {
+                try {
+                    p.playSound(discData.sound, {
+                        pitch: 1.0,
+                        volume: 1.0
+                    });
+                    listeners.add(p.id);
+                } catch (error) {
+                    console.warn(`Failed to play sound for player: ${error}`);
                 }
             }
 
-            // Play the music disc sound at jukebox location
-            block.dimension.playSound(discData.sound, block.location, {
-                volume: 1.0,
-                pitch: 1.0
-            });
-
-            // Show message to player
+            // Show message to the player who inserted the disc
             player.sendMessage(`§6♫ §eTeraz gra: §f${discData.title} §6♫`);
 
             // Track this jukebox as playing
             playingJukeboxes.set(blockPos, {
                 sound: discData.sound,
+                listeners: listeners,
                 dimension: block.dimension,
                 location: block.location
             });
@@ -132,7 +167,7 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
 
 // Handle jukebox removal/stop
 world.afterEvents.playerBreakBlock.subscribe((event) => {
-    const { block, brokenBlockPermutation, player } = event;
+    const { block, brokenBlockPermutation } = event;
 
     if (brokenBlockPermutation.type.id === "minecraft:jukebox") {
         const blockPos = `${block.location.x},${block.location.y},${block.location.z}`;
@@ -143,13 +178,8 @@ world.afterEvents.playerBreakBlock.subscribe((event) => {
 
             // Stop the music for all nearby players
             try {
-                // Get all players in the dimension
-                const players = jukeboxData.dimension.getPlayers();
-
-                // Stop sound for each player
-                for (const p of players) {
-                    p.runCommand(`stopsound @s record`);
-                }
+                const players = getPlayersInRange(jukeboxData.dimension, jukeboxData.location);
+                stopMusicForPlayers(players, jukeboxData.sound);
             } catch (error) {
                 console.warn(`Failed to stop music: ${error}`);
             }
@@ -174,11 +204,11 @@ world.afterEvents.playerInteractWithBlock.subscribe((event) => {
             if (!itemStack || !musicDiscs[itemStack.typeId]) {
                 system.runTimeout(() => {
                     try {
+                        const jukeboxData = playingJukeboxes.get(blockPos);
+
                         // Stop music for all nearby players
-                        const players = block.dimension.getPlayers();
-                        for (const p of players) {
-                            p.runCommand(`stopsound @s record`);
-                        }
+                        const players = getPlayersInRange(block.dimension, block.location);
+                        stopMusicForPlayers(players, jukeboxData.sound);
                     } catch (error) {
                         console.warn(`Failed to stop music on eject: ${error}`);
                     }
