@@ -65,20 +65,23 @@ world.afterEvents.itemCompleteUse.subscribe((event) => {
 const musicDiscs = {
     "wojanshop:musicdiscbaza": {
         sound: "record.wojan_baza",
-        title: "Wojan - Baza"
+        title: "Wojan - Baza",
+        duration: 166 // seconds (2m 46s)
     },
     "wojanshop:musicdisckurier": {
         sound: "record.luczek_kurier",
-        title: "Luczek - Kurier"
+        title: "Luczek - Kurier",
+        duration: 112 // seconds (1m 52s)
     },
     "wojanshop:musicdiscmamban": {
         sound: "record.palion_mamban",
-        title: "Palion - Mam Bana"
+        title: "Palion - Mam Bana",
+        duration: 201 // seconds (3m 21s)
     }
 };
 
-// Track currently playing jukeboxes and which players are listening
-// Structure: { blockPos: { sound: string, listeners: Set<playerId> } }
+// Track currently playing jukeboxes
+// Structure: { blockPos: { sound: string, endTime: number, dimension, location } }
 const playingJukeboxes = new Map();
 
 // Helper function to get players within range of jukebox (65 blocks like vanilla)
@@ -93,16 +96,35 @@ function getPlayersInRange(dimension, location, range = 65) {
     });
 }
 
-// Helper function to stop music for specific players
-function stopMusicForPlayers(players, soundId) {
-    for (const player of players) {
-        try {
-            // Use command since player.stopSound() is only in 2.6.0-beta
-            player.runCommandAsync(`stopsound @s ${soundId}`);
-        } catch (error) {
-            console.warn(`Failed to stop sound for player: ${error}`);
-        }
+// Helper function to check if music is still playing
+function isMusicPlaying(blockPos) {
+    if (!playingJukeboxes.has(blockPos)) {
+        return false;
     }
+
+    const jukeboxData = playingJukeboxes.get(blockPos);
+    const currentTime = Date.now();
+
+    // If music finished, clean up
+    if (currentTime >= jukeboxData.endTime) {
+        playingJukeboxes.delete(blockPos);
+        return false;
+    }
+
+    return true;
+}
+
+// Helper function to get remaining time in seconds
+function getRemainingTime(blockPos) {
+    if (!playingJukeboxes.has(blockPos)) {
+        return 0;
+    }
+
+    const jukeboxData = playingJukeboxes.get(blockPos);
+    const currentTime = Date.now();
+    const remaining = Math.max(0, Math.ceil((jukeboxData.endTime - currentTime) / 1000));
+
+    return remaining;
 }
 
 // Handle music disc insertion into jukebox
@@ -125,29 +147,30 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
     // Schedule the music to play after the block interaction
     system.runTimeout(() => {
         try {
-            // Stop any currently playing music first
-            if (playingJukeboxes.has(blockPos)) {
-                const oldData = playingJukeboxes.get(blockPos);
-                const playersToStop = getPlayersInRange(block.dimension, block.location);
-                stopMusicForPlayers(playersToStop, oldData.sound);
+            // Check if music is already playing in this jukebox
+            if (isMusicPlaying(blockPos)) {
+                const remaining = getRemainingTime(blockPos);
+                player.sendMessage(`§c⏸ §7Muzyka już gra! Poczekaj §e${remaining}§7s...`);
+                return;
             }
 
             // Get all players in range
             const nearbyPlayers = getPlayersInRange(block.dimension, block.location);
 
             // Play music for each player individually
-            const listeners = new Set();
             for (const p of nearbyPlayers) {
                 try {
                     p.playSound(discData.sound, {
                         pitch: 1.0,
                         volume: 1.0
                     });
-                    listeners.add(p.id);
                 } catch (error) {
                     console.warn(`Failed to play sound for player: ${error}`);
                 }
             }
+
+            // Calculate when the music will end
+            const endTime = Date.now() + (discData.duration * 1000);
 
             // Show message to the player who inserted the disc
             player.sendMessage(`§6♫ §eTeraz gra: §f${discData.title} §6♫`);
@@ -155,10 +178,16 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
             // Track this jukebox as playing
             playingJukeboxes.set(blockPos, {
                 sound: discData.sound,
-                listeners: listeners,
+                endTime: endTime,
+                duration: discData.duration,
                 dimension: block.dimension,
                 location: block.location
             });
+
+            // Auto-clear jukebox after music ends
+            system.runTimeout(() => {
+                playingJukeboxes.delete(blockPos);
+            }, discData.duration * 20); // Convert seconds to ticks
 
         } catch (error) {
             console.warn(`Failed to play music disc: ${error}`);
@@ -166,31 +195,21 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
     }, 1);
 });
 
-// Handle jukebox removal/stop
+// Handle jukebox removal - clear tracking but music will play until end
 world.afterEvents.playerBreakBlock.subscribe((event) => {
     const { block, brokenBlockPermutation } = event;
 
     if (brokenBlockPermutation.type.id === "minecraft:jukebox") {
         const blockPos = `${block.location.x},${block.location.y},${block.location.z}`;
 
-        // Stop music if this jukebox was playing
+        // Clear jukebox from tracking (music will finish naturally)
         if (playingJukeboxes.has(blockPos)) {
-            const jukeboxData = playingJukeboxes.get(blockPos);
-
-            // Stop the music for all nearby players
-            try {
-                const players = getPlayersInRange(jukeboxData.dimension, jukeboxData.location);
-                stopMusicForPlayers(players, jukeboxData.sound);
-            } catch (error) {
-                console.warn(`Failed to stop music: ${error}`);
-            }
-
             playingJukeboxes.delete(blockPos);
         }
     }
 });
 
-// Also handle when player clicks jukebox to eject disc
+// Handle disc ejection - clear tracking but music will play until end
 world.afterEvents.playerInteractWithBlock.subscribe((event) => {
     const { block, player } = event;
 
@@ -198,23 +217,20 @@ world.afterEvents.playerInteractWithBlock.subscribe((event) => {
         const blockPos = `${block.location.x},${block.location.y},${block.location.z}`;
 
         // If jukebox was playing and player clicks without holding a disc, they're ejecting
-        if (playingJukeboxes.has(blockPos)) {
+        if (isMusicPlaying(blockPos)) {
             const itemStack = player.getComponent("minecraft:inventory")?.container?.getItem(player.selectedSlotIndex);
 
             // If not holding a music disc, they're ejecting the current one
             if (!itemStack || !musicDiscs[itemStack.typeId]) {
                 system.runTimeout(() => {
-                    try {
-                        const jukeboxData = playingJukeboxes.get(blockPos);
-
-                        // Stop music for all nearby players
-                        const players = getPlayersInRange(block.dimension, block.location);
-                        stopMusicForPlayers(players, jukeboxData.sound);
-                    } catch (error) {
-                        console.warn(`Failed to stop music on eject: ${error}`);
-                    }
-
+                    // Clear from tracking (music will finish naturally)
                     playingJukeboxes.delete(blockPos);
+
+                    // Notify player
+                    const remaining = getRemainingTime(blockPos);
+                    if (remaining > 0) {
+                        player.sendMessage(`§7Płyta wyjęta. Muzyka skończy się za §e${remaining}§7s.`);
+                    }
                 }, 1);
             }
         }
