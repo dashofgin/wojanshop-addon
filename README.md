@@ -3,12 +3,12 @@
 **Nieoficjalny fan-made addon pack ze sklepem Wojan Shop dla Minecraft Bedrock Edition 1.21**
 
 ![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.0+-brightgreen)
-![Version](https://img.shields.io/badge/version-1.3.0-blue)
+![Version](https://img.shields.io/badge/version-1.4.0-blue)
 ![Status](https://img.shields.io/badge/status-active-success)
 
 ## 📋 Opis
 
-Nieoficjalny addon stworzony na własny użytek, dodający **37 unikalnych itemów** inspirowanych sklepem Wojan Shop do Minecraft Bedrock Edition. Zawiera jedzenie, napoje, ubrania i akcesoria!
+Nieoficjalny addon stworzony na własny użytek, dodający **50 unikalnych itemów** inspirowanych sklepem Wojan Shop do Minecraft Bedrock Edition. Zawiera jedzenie, napoje, ubrania, akcesoria i **custom music discs**!
 
 ### ✨ Funkcjonalności
 
@@ -29,6 +29,15 @@ Nieoficjalny addon stworzony na własny użytek, dodający **37 unikalnych item�
   - Logo Wojan Team, Logo Palion
   - **Maskotki**: Wojan, Kati, Noobek, Ptyś
   - Dekoracyjne items idealne do kolekcjonowania i ekspozycji
+
+- **3 Custom Music Discs** 🎵:
+  - **Wojan - Baza** (2m 46s)
+  - **Luczek - Kurier** (1m 52s)
+  - **Palion - Mam Bana** (3m 21s)
+  - Działają z vanilla jukeboxami
+  - Zasięg 65 bloków (jak vanilla)
+  - Streaming audio OGG Vorbis
+  - Custom chat messages podczas odtwarzania
 
 ## 📦 Instalacja
 
@@ -59,23 +68,27 @@ Nieoficjalny addon stworzony na własny użytek, dodający **37 unikalnych item�
 ```mcfunction
 /give @s wojanshop:hamburgermc
 /give @s wojanshop:cocacola
-/give @s wojanshop:napojwojan
+/give @s wojanshop:wojanekmalina
 /give @s wojanshop:bluza1
 /give @s wojanshop:breloczek1
+/give @s wojanshop:musicdiscbaza
 ```
 
 ### Lista wszystkich items
 
 <details>
-<summary>Kliknij aby rozwinąć pełną listę (28 items)</summary>
+<summary>Kliknij aby rozwinąć pełną listę (50 items)</summary>
 
 **Jedzenie i napoje:**
 - `wojanshop:hamburgermc` - Hamburger MC
 - `wojanshop:lody1` - Lody Truskawkowe
 - `wojanshop:lody2` - Lody Czekoladowe
 - `wojanshop:cocacola` - Coca Cola
-- `wojanshop:napojwojan` - Wojan Malinowy
 - `wojanshop:termos` - Termos
+- `wojanshop:wojanekmalina` - Wojanek Malinowy ⚡
+- `wojanshop:wojanekpomarancza` - Wojanek Pomarańczowy ⚡
+- `wojanshop:wojanekgumabalonowa` - Wojanek Guma Balonowa ⚡
+- `wojanshop:wojanekmultiwitamina` - Wojanek Multiwitamina ⚡
 
 **Ubrania:**
 - `wojanshop:bluza1` - Bluza Czarna
@@ -83,6 +96,7 @@ Nieoficjalny addon stworzony na własny użytek, dodający **37 unikalnych item�
 - `wojanshop:koszulka1` - Koszulka Czarna
 - `wojanshop:koszulka2` - Koszulka Biała
 - `wojanshop:czapka` - Czapka
+- `wojanshop:czapkapalion` - Czapka Zimowa Palion
 - `wojanshop:skarpetki` - Skarpetki
 
 **Akcesoria:**
@@ -93,7 +107,19 @@ Nieoficjalny addon stworzony na własny użytek, dodający **37 unikalnych item�
 - `wojanshop:kubek1` - Kubek Czarny
 - `wojanshop:kubek2` - Kubek Biały
 - `wojanshop:wojanteam` - Logo Wojan Team
+- `wojanshop:logopalion` - Logo Palion
 - `wojanshop:breloczek1-9` - 9 różnych breloczków
+
+**Maskotki:**
+- `wojanshop:maskotkawojan` - Maskotka Wojan
+- `wojanshop:maskotkakati` - Maskotka Kati
+- `wojanshop:maskotkanoobek` - Maskotka Noobek
+- `wojanshop:maskotkaptys` - Maskotka Ptyś
+
+**Music Discs:** 🎵
+- `wojanshop:musicdiscbaza` - Music Disc "Wojan - Baza"
+- `wojanshop:musicdisckurier` - Music Disc "Luczek - Kurier"
+- `wojanshop:musicdiscmamban` - Music Disc "Palion - Mam Bana"
 
 </details>
 
@@ -107,20 +133,44 @@ Nieoficjalny addon stworzony na własny użytek, dodający **37 unikalnych item�
 
 Zobacz [CHANGELOG.md](CHANGELOG.md) dla pełnej historii wersji.
 
-### Wersja 1.1.1 (08.01.2026)
-- ✅ Naprawiono rozmiar itemów w grze - dodano attachables system
-- ✅ Items prawidłowo skalowane w ręce gracza (first/third person)
-- ✅ Zachowana wysoka rozdzielczość tekstur fotorealistycznych
-- ✅ Poprawiono ortografię: bryloczek → breloczek
-- ✅ Zmieniono nazwę: "Napój Energetyczny Wojan" → "Wojan Malinowy"
-- ✅ Dodano pack_icon.png dla obu packów
-- ✅ Zaimplementowano custom food effects z JavaScript (Speed, Regen, Strength, Jump, Resistance)
+### Wersja 1.4.0 (11.01.2026)
+- 🎵 **NOWOŚĆ**: Dodano 3 custom music discs (Wojan - Baza, Luczek - Kurier, Palion - Mam Bana)
+- ✨ Dodano 10 nowych itemów (4 Wojanki, 4 maskotki, 2 logo)
+- ⚡ Wielokrotne efekty potion dla Wojanków (Speed, Strength, Jump, Haste, Night Vision, Slow Falling, Health Boost, Regeneration, Resistance)
+- 🔧 Naprawiono format audio dla "Palion - Mam Bana" (konwersja Theora video → Vorbis audio)
+- 📦 Optymalizacja tekstur 256x256 (oszczędność 10.26 MB / 86% redukcja)
+- 🎮 Duration tracking system dla music discs - zapobiega nakładaniu się piosenek
+
+### Poprzednie wersje
+- **v1.1.1** (08.01.2026) - Naprawiono rozmiar itemów, attachables system, food effects
+- **v1.1.0** (06.01.2026) - Fix gigantycznych 3D modeli, uproszczono strukturę
+- Zobacz [CHANGELOG.md](CHANGELOG.md) dla pełnej historii
 
 ## 🐛 Known Issues
 
 - ⚠️ Brak tłumaczeń wielojęzycznych - nazwy hardcoded w JSON
 - ⚠️ Food effects wymagają włączenia Beta APIs na serwerze/świecie
 - ℹ️ Tekstury wysokiej rozdzielczości - używają attachables system
+
+### ⚠️ Music Discs - Ograniczenia Bedrock Edition
+
+**WAŻNE**: Custom music discs w Bedrock Edition mają znane ograniczenia:
+
+- ❌ **Muzyka NIE zatrzymuje się** po wyciągnięciu płyty lub zniszczeniu jukeboxu
+  - Gra do końca utworu (1m 52s - 3m 21s)
+  - To jest **ograniczenie Bedrock Edition**, nie bug w addonie
+  - `/stopsound` nie działa dla custom sounds z resource packów ([MCPE bug #2710](https://bugs.mojang.com/browse/MCPE-2710))
+
+- ✅ **Workaround zaimplementowany**:
+  - Duration tracking system - blokuje nakładanie się piosenek w tym samym jukeboxie
+  - Gracze dostają powiadomienie: "Muzyka już gra! Poczekaj Xs..."
+  - Po wyciągnięciu płyty: "Płyta wyjęta. Muzyka skończy się za Xs."
+  - Różne jukeboy mogą grać różne utwory jednocześnie
+
+- 💡 **Alternatywa**: Podmiana vanilla music discs (pigstep, cat, etc.)
+  - `/stopsound` działa dla vanilla płyt
+  - Ale tracisz oryginalne płyty Minecrafta
+  - Max 16 utworów (limit vanilla discs)
 
 ## 🚀 Roadmap
 
