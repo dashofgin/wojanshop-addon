@@ -2,7 +2,7 @@
   "format_version": "1.14.0",
   "sound_definitions": {
     "record.wojan_baza": {
-      "category": "music",
+      "category": "record",
       "sounds": [
         {
           "name": "sounds/music/wojan_baza",
@@ -12,7 +12,7 @@
       ]
     },
     "record.luczek_kurier": {
-      "category": "music",
+      "category": "record",
       "sounds": [
         {
           "name": "sounds/music/luczek_kurier",
@@ -22,7 +22,7 @@
       ]
     },
     "record.palion_mamban": {
-      "category": "music",
+      "category": "record",
       "sounds": [
         {
           "name": "sounds/music/palion_mamban",

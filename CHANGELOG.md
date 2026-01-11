@@ -7,6 +7,63 @@ Wszystkie znaczące zmiany w projekcie Wojan Shop Addon (nieoficjalny fan-made a
 Format bazuje na [Keep a Changelog](https://keepachangelog.com/pl/1.0.0/),
 a projekt stosuje [Semantic Versioning](https://semver.org/lang/pl/).
 
+## [1.4.0] - 2026-01-11
+
+### ✨ Added
+- **Custom Music Discs System**: Dodano 3 płyty muzyczne z custom utworami
+  - Music Disc "Wojan - Baza" (2m 46s)
+  - Music Disc "Luczek - Kurier" (1m 52s)
+  - Music Disc "Palion - Mam Bana" (3m 21s)
+  - Działa z vanilla jukeboxami
+  - Range 65 bloków (jak vanilla)
+  - Streaming audio w formacie OGG Vorbis
+  - Custom chat messages przy odtwarzaniu
+
+- **Nowe itemy**: Dodano 10 nowych przedmiotów
+  - 4 Wojanki (napoje energetyczne z efektami):
+    - Wojanek Malinowy: Speed II + Strength I + Jump Boost I (60s)
+    - Wojanek Pomarańczowy: Haste II + Night Vision X (120s)
+    - Wojanek Guma Balonowa: Jump Boost III + Slow Falling II (90s)
+    - Wojanek Multiwitamina: Regeneration II + Health Boost I + Resistance I (60s)
+  - 4 Maskotki: Wojan, Kati, Noobek, Ptyś
+  - 2 Logo: Czapka Palion, Logo Palion
+  - Wszystkie z high-quality teksturami 256x256
+
+- **Food Effects dla nowych napojów**: JavaScript integration z @minecraft/server API
+  - Wielokrotne efekty potion jednocześnie
+  - Różne czasy trwania i moce efektów
+  - Particles przy aplikacji efektów
+
+### 🔧 Fixed
+- **Naprawiono format audio dla Palion - Mam Bana**:
+  - Konwersja z Theora video do Vorbis audio (ffmpeg)
+  - Plik teraz poprawnie odtwarzany w grze
+
+- **Optymalizacja tekstur**: Wszystkie tekstury przeskalowane do 256x256
+  - Poprzednio: 1024x1024 do 1092x1092 (11.89 MB)
+  - Obecnie: 256x256 (1.63 MB)
+  - **Oszczędność: 10.26 MB (86% redukcja)**
+  - Backupy oryginałów w `backup_original/`
+
+### ⚠️ Known Limitations
+- **Music discs nie mogą być zatrzymane programatycznie**:
+  - Bedrock Edition nie wspiera `/stopsound` dla custom resource pack sounds (MCPE bug #2710)
+  - `player.stopSound()` istnieje tylko w API 2.6.0-beta (niedostępne na serwerach)
+  - **Workaround**: Duration tracking system - blokuje nakładanie się piosenek
+  - Muzyka gra do końca (112-201s), nawet po wyciągnięciu płyty lub zniszczeniu jukeboxu
+  - Gracze dostają powiadomienie ile czasu pozostało do końca utworu
+  - Różne jukeboy mogą grać różne piosenki jednocześnie
+
+### 📝 Technical
+- Używa @minecraft/server API 2.5.0-beta (downgrade z 2.6.0-beta ze względu na brak wsparcia serwerowego)
+- Sound category: "record" dla music discs
+- Duration tracking z Date.now() i Map() storage
+- System blokowania overlappingu piosenek w tym samym jukeboxie
+- Jukebox position tracking dla multi-player support
+- Range calculation używa Pythagorean theorem dla 65 block radius
+
+---
+
 ## [1.1.1] - 2026-01-08
 
 ### 🔧 Fixed
@@ -154,7 +211,8 @@ a projekt stosuje [Semantic Versioning](https://semver.org/lang/pl/).
 
 ## Version History
 
-- **v1.1.1** (2026-01-08) - ✅ Obecna wersja (stabilna) - Naprawiono rozmiar itemów + attachables
+- **v1.4.0** (2026-01-11) - ✅ Obecna wersja (stabilna) - Music discs + nowe itemy + optymalizacja
+- **v1.1.1** (2026-01-08) - ✅ Stabilna - Naprawiono rozmiar itemów + attachables
 - **v1.1.0** (2026-01-06) - ✅ Stabilna
 - **v1.0.9** (2026-01-05) - ❌ Deprecated
 - **v1.0.8** (2026-01-04) - ❌ Deprecated
@@ -162,6 +220,7 @@ a projekt stosuje [Semantic Versioning](https://semver.org/lang/pl/).
 
 ---
 
+[1.4.0]: https://github.com/dashofgin/wojanshop-addon/releases/tag/v1.4.0
 [1.1.1]: https://github.com/dashofgin/wojanshop-addon/releases/tag/v1.1.1
 [1.1.0]: https://github.com/dashofgin/wojanshop-addon/releases/tag/v1.1.0
 [1.0.9]: https://github.com/dashofgin/wojanshop-addon/releases/tag/v1.0.9
