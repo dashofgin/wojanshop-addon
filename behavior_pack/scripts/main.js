@@ -97,7 +97,8 @@ function getPlayersInRange(dimension, location, range = 65) {
 function stopMusicForPlayers(players, soundId) {
     for (const player of players) {
         try {
-            player.stopSound(soundId);
+            // Use command since player.stopSound() is only in 2.6.0-beta
+            player.runCommandAsync(`stopsound @s ${soundId}`);
         } catch (error) {
             console.warn(`Failed to stop sound for player: ${error}`);
         }
