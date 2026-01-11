@@ -2,8 +2,13 @@
 *.mcaddon
 *.mcpack
 *.mcworld
-world_behavior_packs.json
-world_resource_packs.json
+world_behavior_packs*.json
+world_resource_packs*.json
+
+# Build artifacts and old versions
+*.zip
+wojanshop_behavior_pack/
+wojanshop_resource_pack/
 
 # OS
 .DS_Store
